@@ -8,7 +8,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "format": "biome format --write terraform.js spec/",
+    "build": "tsgo",
+    "format": "biome format --write src",
     "test": "vitest run"
   },
   "files": [
@@ -33,7 +34,9 @@
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
     "@types/node": "^22.15.21",
+    "@typescript/native-preview": "7.0.0-dev.20250527.1",
     "highlight.js": "^11.11.1",
+    "typescript": "^5.8.3",
     "vitest": "^3.1.4"
   },
   "packageManager": "pnpm@10.11.0"

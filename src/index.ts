@@ -9,13 +9,15 @@
  * Category: scripting
  */
 
-const NUMBERS = {
+import { HLJSApi, Language, LanguageFn, Mode } from "highlight.js";
+
+const NUMBERS: Mode = {
 	className: "number",
 	begin: "\\b\\d+(\\.\\d+)?",
 	relevance: 0,
 };
 
-const STRINGS = {
+const STRINGS: Mode = {
 	className: "string",
 	begin: '"',
 	end: '"',
@@ -76,17 +78,16 @@ const STRINGS = {
 	],
 };
 
-function hljsDefineTerraform(hljs) {
+const hljsDefineTerraform: LanguageFn = (hljs: HLJSApi): Language =>{
 	return {
 		aliases: ["tf", "hcl"],
 		keywords:
 			"resource variable provider output locals module data terraform|10",
-		literal: "false true null",
 		contains: [hljs.COMMENT("\\#", "$"), NUMBERS, STRINGS],
 	};
 }
 
-export default function (hljs) {
+export default function (hljs: HLJSApi) {
 	hljs.registerLanguage("terraform", hljsDefineTerraform);
 }
 

@@ -1,5 +1,5 @@
 import hljs from "highlight.js";
-import { definer } from "../index";
+import { definer } from "../index.js";
 import fs from "fs";
 import path from "path";
 import { describe } from "vitest";
