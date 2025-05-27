@@ -1,16 +1,17 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "lib": ["esnext", "dom", "dom.iterable"],
-    "module": "NodeNext",
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
     "strict": true,
+    "strictNullChecks": true,
     "skipLibCheck": true,
     "outDir": "./dist",
   },
   "include": ["src/index.ts"],
   "exclude": [
     "node_modules",
-    "src/**/*.spec.ts",
-    "src/**/*.test.ts",
+    "dist",
+    "./src/spec/*.spec.ts",
   ],
 }

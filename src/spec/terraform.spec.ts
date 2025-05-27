@@ -1,7 +1,7 @@
 import hljs from "highlight.js";
-import { definer } from "../index.js";
-import fs from "fs";
-import path from "path";
+import { definer } from "../index.ts";
+import fs from "node:fs";
+import path from "node:path";
 import { describe } from "vitest";
 import { it } from "vitest";
 import { expect } from "vitest";

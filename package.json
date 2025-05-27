@@ -5,7 +5,7 @@
     "access": "public"
   },
   "description": "highlight.js syntax definition for Ethereum's terraform language",
-  "main": "index.js",
+  "exports": "./dist/index.js",
   "type": "module",
   "scripts": {
     "build": "tsgo",
