@@ -1,5 +1,5 @@
 import hljs from "highlight.js";
-import { definer } from "../terraform";
+import { definer } from "../index";
 import fs from "fs";
 import path from "path";
 import { describe } from "vitest";
