@@ -4,7 +4,7 @@
   "description": "highlight.js syntax definition for Ethereum's terraform language",
   "main": "terraform.js",
   "scripts": {
-    "test": "jasmine"
+    "test": "vitest run"
   },
   "files": [
     "terraform.js"
@@ -26,8 +26,8 @@
   },
   "homepage": "https://github.com/taga3s/highlightjs-terraform#readme",
   "devDependencies": {
-    "highlight.js": "^9.15.6",
-    "jasmine": "^3.3.1"
+    "highlight.js": "^11.11.1",
+    "vitest": "^3.1.4"
   },
   "packageManager": "pnpm@10.11.0"
 }
