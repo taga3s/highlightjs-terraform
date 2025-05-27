@@ -11,7 +11,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/highlightjs/highlightjs-terraform.git"
+    "url": "https://github.com/taga3s/highlightjs-terraform.git"
   },
   "keywords": [
     "terraform",
@@ -19,14 +19,15 @@
     "highlightjs",
     "syntax"
   ],
-  "author": "WinOpsDBA",
+  "author": "taga3s",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/WinOpsDBA/highlightjs-terraform/issues"
+    "url": "https://github.com/taga3s/highlightjs-terraform/issues"
   },
-  "homepage": "https://github.com/highlightjs/highlightjs-terraform#readme",
+  "homepage": "https://github.com/taga3s/highlightjs-terraform#readme",
   "devDependencies": {
     "highlight.js": "^9.15.6",
     "jasmine": "^3.3.1"
-  }
+  },
+  "packageManager": "pnpm@10.11.0"
 }
