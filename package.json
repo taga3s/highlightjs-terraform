@@ -3,6 +3,7 @@
   "version": "1.0.6",
   "description": "highlight.js syntax definition for Ethereum's terraform language",
   "main": "terraform.js",
+  "type": "module",
   "scripts": {
     "test": "vitest run"
   },
