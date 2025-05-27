@@ -9,17 +9,17 @@ import { expect } from "vitest";
 hljs.registerLanguage("terraform", definer);
 
 describe("highlight bundle", () => {
-  it("highlights terraform", () => {
-    const input = fs.readFileSync(
-      path.resolve(__dirname, "./input.txt"),
-      "utf-8"
-    );
+	it("highlights terraform", () => {
+		const input = fs.readFileSync(
+			path.resolve(__dirname, "./input.txt"),
+			"utf-8",
+		);
 
-    const { value: result, language } = hljs.highlightAuto(input, [
-      "terraform",
-    ]);
+		const { value: result, language } = hljs.highlightAuto(input, [
+			"terraform",
+		]);
 
-    expect(language).toBe("terraform");
-    expect(result).toMatchSnapshot();
-  });
+		expect(language).toBe("terraform");
+		expect(result).toMatchSnapshot();
+	});
 });

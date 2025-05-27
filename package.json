@@ -5,6 +5,7 @@
   "main": "terraform.js",
   "type": "module",
   "scripts": {
+    "format": "biome format --write terraform.js spec/",
     "test": "vitest run"
   },
   "files": [
@@ -27,6 +28,7 @@
   },
   "homepage": "https://github.com/taga3s/highlightjs-terraform#readme",
   "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
     "@types/node": "^22.15.21",
     "highlight.js": "^11.11.1",
     "vitest": "^3.1.4"
