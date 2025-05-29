@@ -1,41 +1,21 @@
 # Highlightjs-Terraform (maintained fork)
 
+This is a maintained fork of https://github.com/highlightjs/highlightjs-terraform. I started this fork because the original repository was not being maintained for a long time, but it is still a very useful library for syntax highlighting Terraform code in web applications using Highlight.js.
+
 ## Usage
 
-* Three files are required.
+1. Install with npm, pnpm, or yarn:
 
-    -  A style `.css` file.
+```bash
+$ npm install @taga3s/highlightjs-terraform
+```
 
-    - The `highlight.pack.js` file.
+2. Use `.css` files of highlight.js in your project
 
-    - The `terraform.js` file located in this repository.
+## Example
 
-### Steps
+TODO
 
-1. Clone this repository to your localhost using the following command: `git clone git@github.com:highlightjs/highlightjs-terraform.git`.
+## License
 
-2. Head to the [Highlightjs download page](https://highlightjs.org/download/).
-
-3. Under the heading **Custom package**, **Click** download.
-
-4. Extract the downloaded `.zip` file.
-
-5. In the extracted `.zip` file, choose a `.css` style in `./styles` and copy it to your project.
-
-6. In the extracted `.zip` file, copy the `highlight.pack.js` file to your project.
-
-7. From this repo, copy the `terraform.js` file to your project.
-
-8. Add the following lines to your website's `<head>` tag:
-
-    ```html
-    <link rel="stylesheet" href="/path/to/style.css">
-    <script type="text/javascript" src="/path/to/highlight.pack.js"></script>
-    <script type="text/javascript" src="/path/to/terraform.js"></script>
-    <script type="text/javascript">
-        hljs.registerLanguage('terraform', window.hljsDefineTerraform);
-        hljs.highlightAll();
-    </script>
-    ```
-
-That's it! Write some terraform code within `<pre><code class="tf">Some terraform code here!</code></pre>` and behold, your coloured terraform code.
+[MIT](https://github.com/taga3s/highlightjs-terraform/blob/main/LICENSE)
