@@ -9,7 +9,7 @@
  * Category: scripting
  */
 
-import { HLJSApi, Language, LanguageFn, Mode } from "highlight.js";
+import type { HLJSApi, Language, LanguageFn, Mode } from "highlight.js";
 
 const NUMBERS: Mode = {
 	className: "number",
@@ -78,14 +78,14 @@ const STRINGS: Mode = {
 	],
 };
 
-const hljsDefineTerraform: LanguageFn = (hljs: HLJSApi): Language =>{
+const hljsDefineTerraform: LanguageFn = (hljs: HLJSApi): Language => {
 	return {
 		aliases: ["tf", "hcl"],
 		keywords:
 			"resource variable provider output locals module data terraform|10",
 		contains: [hljs.COMMENT("\\#", "$"), NUMBERS, STRINGS],
 	};
-}
+};
 
 export default function (hljs: HLJSApi) {
 	hljs.registerLanguage("terraform", hljsDefineTerraform);

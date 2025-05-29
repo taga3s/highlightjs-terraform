@@ -1,10 +1,10 @@
-import hljs from "highlight.js";
-import { definer } from "../index.ts";
 import fs from "node:fs";
 import path from "node:path";
+import hljs from "highlight.js";
 import { describe } from "vitest";
 import { it } from "vitest";
 import { expect } from "vitest";
+import { definer } from "../index.ts";
 
 hljs.registerLanguage("terraform", definer);
 

@@ -9,7 +9,9 @@
   "type": "module",
   "scripts": {
     "build": "tsgo",
-    "format": "biome format --write src",
+    "format": "biome format --write ./src",
+    "lint": "biome lint --write --unsafe ./src",
+    "check": "biome check --write src",
     "test": "vitest run"
   },
   "files": [
