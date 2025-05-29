@@ -1,3 +1,13 @@
+/*
+ * highlight.js terraform syntax highlighting definition
+ *
+ * @package: highlightjs-terraform
+ * @author:  Seiya Tagami
+ * @since:   2025-05-27
+ *
+ * Description: Terraform (HCL) language definition
+ * Category: scripting
+ */
 const NUMBERS = {
     className: "number",
     begin: "\\b\\d+(\\.\\d+)?",
