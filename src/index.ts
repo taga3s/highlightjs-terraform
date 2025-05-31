@@ -11,12 +11,18 @@
 
 import type { HLJSApi, Language, LanguageFn, Mode } from "highlight.js";
 
+/**
+ * {@link https://developer.hashicorp.com/terraform/language/expressions/types#numbers}
+ */
 const NUMBERS: Mode = {
 	className: "number",
 	begin: "\\b\\d+(\\.\\d+)?",
 	relevance: 0,
 };
 
+/**
+ * {@link https://developer.hashicorp.com/terraform/language/expressions/types#strings}
+ */
 const STRINGS: Mode = {
 	className: "string",
 	begin: '"',
