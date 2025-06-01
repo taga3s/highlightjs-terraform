@@ -84,14 +84,12 @@ const STRINGS: Mode = {
 	],
 };
 
-const TOP_LEVEL_BLOCKS: Mode = {
+const BLOCKS: Mode = {
 	contains: [
 		{
 			className: "keyword",
-			begin:
-				"\\b(resource|variable|output|data|locals|terraform|provider|module)\\b(?!\\s*=)",
-			end: '(?=\\s*["\\{])',
-			excludeEnd: true,
+			// NOTE: highlight.js does not highlight words captured by lookahead assertions.
+			begin: '^\\s*\\b[a-zA-Z_][a-zA-Z0-9_]*\\b(?=\\s*["\\{])',
 		},
 	],
 };
@@ -101,7 +99,7 @@ const ALIASES = ["tf", "hcl"];
 const hljsDefineTerraform: LanguageFn = (hljs: HLJSApi): Language => {
 	return {
 		aliases: ALIASES,
-		contains: [hljs.COMMENT("\\#", "$"), NUMBERS, STRINGS, TOP_LEVEL_BLOCKS],
+		contains: [hljs.COMMENT("\\#", "$"), NUMBERS, STRINGS, BLOCKS],
 	};
 };
 
