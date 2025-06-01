@@ -1,0 +1,31 @@
+name: Setup CI
+description: Setup CI environment
+
+inputs:
+  node-version:
+    required: false
+    description: 'Specify Node.js version. If this is not specified, Node.js version specified in .node-version will be used'
+
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/setup-node@cdca7365b2dadb8aad0a33bc7601856ffabcc48e # v4.3.0
+      with:
+        node-version: ${{ inputs.node-version }}
+        node-version-file: .node-version
+
+    - name: Set up node
+      uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+      with:
+        node-version-file: .node-version
+
+    - name: Set up corepack
+      run: |
+        npm i -g corepack
+        corepack enable
+      shell: bash
+
+    - name: Install dependencies
+      run: |
+        pnpm install --frozen-lockfile
+      shell: bash
