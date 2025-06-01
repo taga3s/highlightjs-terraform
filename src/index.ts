@@ -42,7 +42,7 @@ const STRINGS: Mode = {
 				},
 				{
 					className: "meta",
-					begin: "[A-Za-z_0-9]*" + "\\(",
+					begin: "[A-Za-z_0-9]*\\(",
 					end: "\\)",
 					contains: [
 						NUMBERS,
@@ -98,7 +98,7 @@ const BLOCKS: Mode = {
 		{
 			className: "keyword",
 			// NOTE: highlight.js does not highlight words captured by lookahead assertions.
-			begin: '^\\s*\\b[a-zA-Z_][a-zA-Z0-9_]*\\b(?=\\s*["\\{])',
+			begin: '^\\s*\\b[A-Za-z_0-9]*\\b(?=\\s*["\\{])',
 		},
 	],
 };
