@@ -1,0 +1,18 @@
+locals {
+    subnet_map_list = [
+        { "name" = "sample-subnet1", "cidr" = "10.0.101.0/24", "az_name" = "ap-northeast-1a" },
+        { "name" = "sample-subnet2", "cidr" = "10.0.102.0/24", "az_name" = "ap-northeast-1c" },
+        { "name" = "sample-subnet3", "cidr" = "10.0.103.0/24", "az_name" = "ap-northeast-1c" },
+    ]
+}
+
+resource "aws_subnet" "subnet" {
+    for_each = { for subnet in local.subnet_map_list : subnet.name => subnet }
+
+    vpc_id = aws_vpc.vpc.id
+    cidr_block = each.value.cidr
+    availability_zone = each.value.az_name
+    tags = {
+        Name = each.key
+    }
+}

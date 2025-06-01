@@ -22,4 +22,32 @@ describe("highlight bundle", () => {
 		expect(language).toBe("terraform");
 		expect(result).toMatchSnapshot();
 	});
+
+	it("highlights terraform (base2-input)", () => {
+		const input = fs.readFileSync(
+			path.resolve(__dirname, "./base2-input.txt"),
+			"utf-8",
+		);
+
+		const { value: result, language } = hljs.highlightAuto(input, [
+			"terraform",
+		]);
+
+		expect(language).toBe("terraform");
+		expect(result).toMatchSnapshot();
+	});
+
+	it("highlights terraform (base3-input)", () => {
+		const input = fs.readFileSync(
+			path.resolve(__dirname, "./base3-input.txt"),
+			"utf-8",
+		);
+
+		const { value: result, language } = hljs.highlightAuto(input, [
+			"terraform",
+		]);
+
+		expect(language).toBe("terraform");
+		expect(result).toMatchSnapshot();
+	});
 });

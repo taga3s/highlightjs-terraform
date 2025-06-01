@@ -32,3 +32,56 @@ terraform</span> {
 }
 "
 `;
+
+exports[`highlight bundle > highlights terraform (base2-input) 1`] = `
+"<span class="hljs-keyword">terraform</span> {
+<span class="hljs-keyword">  required_providers</span> {
+    aws = {
+      source = <span class="hljs-string">&quot;hashicorp/aws&quot;</span>
+    }
+  }
+}
+<span class="hljs-keyword">
+provider</span> <span class="hljs-string">&quot;aws&quot;</span> {
+  alias   = <span class="hljs-string">&quot;user&quot;</span>
+  region  = var.region
+  profile = var.profile
+}
+<span class="hljs-keyword">resource</span> <span class="hljs-string">&quot;aws_s3_bucket&quot;</span> <span class="hljs-string">&quot;example&quot;</span> {
+  provider      = aws.user
+  bucket        = var.bucket_name
+  acl           = var.acl_value
+  force_destroy = <span class="hljs-string">&quot;false&quot;</span>
+}
+<span class="hljs-keyword">
+resource</span> <span class="hljs-string">&quot;aws_s3_bucket_object&quot;</span> <span class="hljs-string">&quot;object2&quot;</span> {
+  for_each = <span class="hljs-meta">fileset(<span class="hljs-string">&quot;myfiles/&quot;</span>, <span class="hljs-string">&quot;*&quot;</span>)</span>
+  bucket   = aws_s3_bucket.example.bucket
+  key      = <span class="hljs-string">&quot;new_objects&quot;</span>
+  source   = <span class="hljs-string">&quot;myfiles/<span class="hljs-subst">\${each.value}</span>&quot;</span>
+  etag     = <span class="hljs-meta">filemd5(<span class="hljs-string">&quot;myfiles/<span class="hljs-subst">\${each.value}</span>&quot;</span>)</span>
+}
+"
+`;
+
+exports[`highlight bundle > highlights terraform (base3-input) 1`] = `
+"<span class="hljs-keyword">locals</span> {
+    subnet_map_list = [
+        { <span class="hljs-string">&quot;name&quot;</span> = <span class="hljs-string">&quot;sample-subnet1&quot;</span>, <span class="hljs-string">&quot;cidr&quot;</span> = <span class="hljs-string">&quot;10.0.101.0/24&quot;</span>, <span class="hljs-string">&quot;az_name&quot;</span> = <span class="hljs-string">&quot;ap-northeast-1a&quot;</span> },
+        { <span class="hljs-string">&quot;name&quot;</span> = <span class="hljs-string">&quot;sample-subnet2&quot;</span>, <span class="hljs-string">&quot;cidr&quot;</span> = <span class="hljs-string">&quot;10.0.102.0/24&quot;</span>, <span class="hljs-string">&quot;az_name&quot;</span> = <span class="hljs-string">&quot;ap-northeast-1c&quot;</span> },
+        { <span class="hljs-string">&quot;name&quot;</span> = <span class="hljs-string">&quot;sample-subnet3&quot;</span>, <span class="hljs-string">&quot;cidr&quot;</span> = <span class="hljs-string">&quot;10.0.103.0/24&quot;</span>, <span class="hljs-string">&quot;az_name&quot;</span> = <span class="hljs-string">&quot;ap-northeast-1c&quot;</span> },
+    ]
+}
+<span class="hljs-keyword">
+resource</span> <span class="hljs-string">&quot;aws_subnet&quot;</span> <span class="hljs-string">&quot;subnet&quot;</span> {
+    for_each = { for subnet in local.subnet_map_list : subnet.name =&gt; subnet }
+
+    vpc_id = aws_vpc.vpc.id
+    cidr_block = each.value.cidr
+    availability_zone = each.value.az_name
+    tags = {
+        Name = each.key
+    }
+}
+"
+`;
