@@ -29,9 +29,14 @@ const BOOLS: Mode = {
 	relevance: 0,
 };
 
+const FUNCTION_SYMBOL_REGEX_BEGIN = "[A-Za-z_0-9]+\\(";
+const FUNCTION_SYMBOL_REGEX_END = "\\)";
+
 /**
  * {@link https://developer.hashicorp.com/terraform/language/expressions/types#strings}
  * {@link https://developer.hashicorp.com/terraform/language/expressions/strings}
+ * TODO: We need to simplify this complex string definition using recursive method to generate
+ * nested strings.
  */
 const STRINGS: Mode = {
 	className: "string",
@@ -51,8 +56,8 @@ const STRINGS: Mode = {
 				},
 				{
 					className: "meta",
-					begin: "[A-Za-z_0-9]*\\(",
-					end: "\\)",
+					begin: FUNCTION_SYMBOL_REGEX_BEGIN,
+					end: FUNCTION_SYMBOL_REGEX_END,
 					contains: [
 						NUMBERS,
 						{
@@ -79,8 +84,8 @@ const STRINGS: Mode = {
 										},
 										{
 											className: "meta",
-											begin: "[A-Za-z_0-9]*" + "\\(",
-											end: "\\)",
+											begin: FUNCTION_SYMBOL_REGEX_BEGIN,
+											end: FUNCTION_SYMBOL_REGEX_END,
 										},
 									],
 								},
@@ -92,6 +97,16 @@ const STRINGS: Mode = {
 			],
 		},
 	],
+};
+
+/**
+ * {@link https://developer.hashicorp.com/terraform/language/functions}
+ */
+const FUNCTIONS: Mode = {
+	className: "meta",
+	begin: FUNCTION_SYMBOL_REGEX_BEGIN,
+	end: FUNCTION_SYMBOL_REGEX_END,
+	contains: [NUMBERS, STRINGS, BOOLS, "self"],
 };
 
 /**
@@ -117,7 +132,14 @@ const ALIASES = ["tf", "hcl"];
 const hljsDefineTerraform: LanguageFn = (hljs: HLJSApi): Language => {
 	return {
 		aliases: ALIASES,
-		contains: [hljs.COMMENT("\\#", "$"), NUMBERS, STRINGS, BOOLS, BLOCKS],
+		contains: [
+			hljs.COMMENT("\\#", "$"),
+			NUMBERS,
+			BOOLS,
+			STRINGS,
+			FUNCTIONS,
+			BLOCKS,
+		],
 	};
 };
 
