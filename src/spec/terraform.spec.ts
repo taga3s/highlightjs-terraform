@@ -9,9 +9,9 @@ import { definer } from "../index.ts";
 hljs.registerLanguage("terraform", definer);
 
 describe("highlight bundle", () => {
-	it("highlights terraform", () => {
+	it("highlights terraform (base-input)", () => {
 		const input = fs.readFileSync(
-			path.resolve(__dirname, "./input.txt"),
+			path.resolve(__dirname, "./base-input.txt"),
 			"utf-8",
 		);
 

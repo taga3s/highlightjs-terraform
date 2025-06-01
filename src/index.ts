@@ -84,25 +84,24 @@ const STRINGS: Mode = {
 	],
 };
 
-const ALIASES = ["tf", "hcl"];
+const TOP_LEVEL_BLOCKS: Mode = {
+	contains: [
+		{
+			className: "keyword",
+			begin:
+				"\\b(resource|variable|output|data|locals|terraform|provider|module)\\b(?!\\s*=)",
+			end: '(?=\\s*["\\{])',
+			excludeEnd: true,
+		},
+	],
+};
 
-const KEYWORDS = [
-	// Top-level block keywords
-	"resource",
-	"variable",
-	"output",
-	"locals",
-	"data",
-	"module",
-	"terraform|10",
-	"provider",
-];
+const ALIASES = ["tf", "hcl"];
 
 const hljsDefineTerraform: LanguageFn = (hljs: HLJSApi): Language => {
 	return {
 		aliases: ALIASES,
-		keywords: KEYWORDS,
-		contains: [hljs.COMMENT("\\#", "$"), NUMBERS, STRINGS],
+		contains: [hljs.COMMENT("\\#", "$"), NUMBERS, STRINGS, TOP_LEVEL_BLOCKS],
 	};
 };
 

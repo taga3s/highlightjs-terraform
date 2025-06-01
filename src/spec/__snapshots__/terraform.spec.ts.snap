@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`highlight bundle > highlights terraform 1`] = `
+exports[`highlight bundle > highlights terraform (base-input) 1`] = `
 "<span class="hljs-comment"># Terraform (hcl)</span>
 
 <span class="hljs-keyword">variable</span> <span class="hljs-string">&quot;string&quot;</span> {
