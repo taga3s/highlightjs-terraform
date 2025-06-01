@@ -22,6 +22,7 @@ const NUMBERS: Mode = {
 
 /**
  * {@link https://developer.hashicorp.com/terraform/language/expressions/types#strings}
+ * {@link https://developer.hashicorp.com/terraform/language/expressions/strings}
  */
 const STRINGS: Mode = {
 	className: "string",
@@ -84,6 +85,14 @@ const STRINGS: Mode = {
 	],
 };
 
+/**
+ * Match following patterns:
+ * <BLOCK NAME> {}
+ * or
+ * <BLOCK NAME> "name" {}
+ * or
+ * <BLOCK NAME> "name" "name" {}
+ */
 const BLOCKS: Mode = {
 	contains: [
 		{
