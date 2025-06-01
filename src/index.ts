@@ -39,7 +39,7 @@ const STRINGS: Mode = {
 	end: '"',
 	contains: [
 		{
-			className: "variable",
+			className: "subst",
 			begin: "\\${",
 			end: "\\}",
 			relevance: 9,
@@ -61,7 +61,7 @@ const STRINGS: Mode = {
 							end: '"',
 							contains: [
 								{
-									className: "variable",
+									className: "subst",
 									begin: "\\${",
 									end: "\\}",
 									contains: [
@@ -71,7 +71,7 @@ const STRINGS: Mode = {
 											end: '"',
 											contains: [
 												{
-													className: "variable",
+													className: "subst",
 													begin: "\\${",
 													end: "\\}",
 												},

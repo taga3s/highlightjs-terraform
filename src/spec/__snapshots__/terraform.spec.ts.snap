@@ -11,17 +11,17 @@ resource</span> <span class="hljs-string">&quot;azurerm_subnet&quot;</span> <spa
   count                = <span class="hljs-number">1</span>
   number               = <span class="hljs-number">2.3</span>
   boolean              = <span class="hljs-literal">true</span>
-  type                 = <span class="hljs-string">&quot;<span class="hljs-variable">\${var.string}</span>&quot;</span>
-  name                 = <span class="hljs-string">&quot;<span class="hljs-variable">\${var.prefix}</span>-sn&quot;</span>
-  resource_group_name  = <span class="hljs-string">&quot;<span class="hljs-variable">\${azurerm_resource_group.rg1.name}</span>&quot;</span>
-  virtual_network      = <span class="hljs-string">&quot;<span class="hljs-variable">\${<span class="hljs-meta">cidrsubnet(<span class="hljs-string">&quot;test&quot;</span>,<span class="hljs-number">3</span>,<span class="hljs-meta">test()</span>)</span>}</span>&quot;</span>
-  address_prefix       = <span class="hljs-string">&quot;<span class="hljs-variable">\${<span class="hljs-meta">cidrsubnet(<span class="hljs-string">&quot;<span class="hljs-variable">\${var.vnets[<span class="hljs-string">&quot;<span class="hljs-variable">\${var.location}</span>&quot;</span>,<span class="hljs-string">&quot;test1&quot;</span>]}</span>&quot;</span>,<span class="hljs-string">&quot;<span class="hljs-variable">\${var.network_size}</span>&quot;</span>,<span class="hljs-number">3</span>,<span class="hljs-string">&quot;test&quot;</span>)</span>}</span>&quot;</span>
+  type                 = <span class="hljs-string">&quot;<span class="hljs-subst">\${var.string}</span>&quot;</span>
+  name                 = <span class="hljs-string">&quot;<span class="hljs-subst">\${var.prefix}</span>-sn&quot;</span>
+  resource_group_name  = <span class="hljs-string">&quot;<span class="hljs-subst">\${azurerm_resource_group.rg1.name}</span>&quot;</span>
+  virtual_network      = <span class="hljs-string">&quot;<span class="hljs-subst">\${<span class="hljs-meta">cidrsubnet(<span class="hljs-string">&quot;test&quot;</span>,<span class="hljs-number">3</span>,<span class="hljs-meta">test()</span>)</span>}</span>&quot;</span>
+  address_prefix       = <span class="hljs-string">&quot;<span class="hljs-subst">\${<span class="hljs-meta">cidrsubnet(<span class="hljs-string">&quot;<span class="hljs-subst">\${var.vnets[<span class="hljs-string">&quot;<span class="hljs-subst">\${var.location}</span>&quot;</span>,<span class="hljs-string">&quot;test1&quot;</span>]}</span>&quot;</span>,<span class="hljs-string">&quot;<span class="hljs-subst">\${var.network_size}</span>&quot;</span>,<span class="hljs-number">3</span>,<span class="hljs-string">&quot;test&quot;</span>)</span>}</span>&quot;</span>
 
-  tags = <span class="hljs-string">&quot;<span class="hljs-variable">\${<span class="hljs-meta">merge(local.tags, <span class="hljs-meta">map(<span class="hljs-string">&quot;update&quot;</span>,<span class="hljs-string">&quot;<span class="hljs-variable">\${<span class="hljs-meta">timestamp()</span>}</span>&quot;</span>)</span>)</span>}</span>&quot;</span>
+  tags = <span class="hljs-string">&quot;<span class="hljs-subst">\${<span class="hljs-meta">merge(local.tags, <span class="hljs-meta">map(<span class="hljs-string">&quot;update&quot;</span>,<span class="hljs-string">&quot;<span class="hljs-subst">\${<span class="hljs-meta">timestamp()</span>}</span>&quot;</span>)</span>)</span>}</span>&quot;</span>
 }
 <span class="hljs-keyword">
 output</span> <span class="hljs-string">&quot;public_ip_address&quot;</span> {
-  value = [<span class="hljs-string">&quot;<span class="hljs-variable">\${azurerm_public_ip.pip1.*.ip_address}</span>&quot;</span>]
+  value = [<span class="hljs-string">&quot;<span class="hljs-subst">\${azurerm_public_ip.pip1.*.ip_address}</span>&quot;</span>]
 }
 <span class="hljs-keyword">
 
