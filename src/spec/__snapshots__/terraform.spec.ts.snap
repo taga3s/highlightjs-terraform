@@ -10,7 +10,7 @@ variable</span> <span class="hljs-string">&quot;string&quot;</span> {
 resource</span> <span class="hljs-string">&quot;azurerm_subnet&quot;</span> <span class="hljs-string">&quot;sn1&quot;</span> {
   count                = <span class="hljs-number">1</span>
   number               = <span class="hljs-number">2.3</span>
-  boolean              = true
+  boolean              = <span class="hljs-literal">true</span>
   type                 = <span class="hljs-string">&quot;<span class="hljs-variable">\${var.string}</span>&quot;</span>
   name                 = <span class="hljs-string">&quot;<span class="hljs-variable">\${var.prefix}</span>-sn&quot;</span>
   resource_group_name  = <span class="hljs-string">&quot;<span class="hljs-variable">\${azurerm_resource_group.rg1.name}</span>&quot;</span>

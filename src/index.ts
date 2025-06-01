@@ -21,6 +21,15 @@ const NUMBERS: Mode = {
 };
 
 /**
+ * {@link https://developer.hashicorp.com/terraform/language/expressions/types#bool}
+ */
+const BOOLS: Mode = {
+	className: "literal",
+	begin: "\\b(true|false)\\b",
+	relevance: 0,
+};
+
+/**
  * {@link https://developer.hashicorp.com/terraform/language/expressions/types#strings}
  * {@link https://developer.hashicorp.com/terraform/language/expressions/strings}
  */
@@ -108,7 +117,7 @@ const ALIASES = ["tf", "hcl"];
 const hljsDefineTerraform: LanguageFn = (hljs: HLJSApi): Language => {
 	return {
 		aliases: ALIASES,
-		contains: [hljs.COMMENT("\\#", "$"), NUMBERS, STRINGS, BLOCKS],
+		contains: [hljs.COMMENT("\\#", "$"), NUMBERS, STRINGS, BOOLS, BLOCKS],
 	};
 };
 
