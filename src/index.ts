@@ -33,70 +33,49 @@ const FUNCTION_SYMBOL_REGEX_BEGIN = "[A-Za-z_0-9]+\\(";
 const FUNCTION_SYMBOL_REGEX_END = "\\)";
 
 /**
+ * Matches strings with interpolation.
+ * This function is recursive and creates a new mode for strings with interpolation
+ * up to a specified depth.
+ */
+const createSTRINGSWithINTERPOLATION = (opt: { depth: number }): Mode => {
+	if (opt.depth < 0) {
+		return { contains: [] };
+	}
+
+	const _STRINGS = {
+		className: "string",
+		begin: '"',
+		end: '"',
+		contains: [createSTRINGSWithINTERPOLATION({ depth: opt.depth - 1 })],
+	};
+
+	const _FUNCTIONS: Mode = {
+		className: "meta",
+		begin: FUNCTION_SYMBOL_REGEX_BEGIN,
+		end: FUNCTION_SYMBOL_REGEX_END,
+		contains: [NUMBERS, BOOLS, _STRINGS, "self"],
+	};
+
+	const INTERPOLATION: Mode = {
+		className: "subst",
+		begin: "\\${",
+		end: "\\}",
+		relevance: 9,
+		contains: [NUMBERS, BOOLS, _STRINGS, _FUNCTIONS, "self"],
+	};
+
+	return INTERPOLATION;
+};
+
+/**
  * {@link https://developer.hashicorp.com/terraform/language/expressions/types#strings}
  * {@link https://developer.hashicorp.com/terraform/language/expressions/strings}
- * TODO: We need to simplify this complex string definition using recursive method to generate
- * nested strings.
  */
 const STRINGS: Mode = {
 	className: "string",
 	begin: '"',
 	end: '"',
-	contains: [
-		{
-			className: "subst",
-			begin: "\\${",
-			end: "\\}",
-			relevance: 9,
-			contains: [
-				{
-					className: "string",
-					begin: '"',
-					end: '"',
-				},
-				{
-					className: "meta",
-					begin: FUNCTION_SYMBOL_REGEX_BEGIN,
-					end: FUNCTION_SYMBOL_REGEX_END,
-					contains: [
-						NUMBERS,
-						{
-							className: "string",
-							begin: '"',
-							end: '"',
-							contains: [
-								{
-									className: "subst",
-									begin: "\\${",
-									end: "\\}",
-									contains: [
-										{
-											className: "string",
-											begin: '"',
-											end: '"',
-											contains: [
-												{
-													className: "subst",
-													begin: "\\${",
-													end: "\\}",
-												},
-											],
-										},
-										{
-											className: "meta",
-											begin: FUNCTION_SYMBOL_REGEX_BEGIN,
-											end: FUNCTION_SYMBOL_REGEX_END,
-										},
-									],
-								},
-							],
-						},
-						"self",
-					],
-				},
-			],
-		},
-	],
+	contains: [createSTRINGSWithINTERPOLATION({ depth: 2 })],
 };
 
 /**
