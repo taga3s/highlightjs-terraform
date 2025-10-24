@@ -1,4 +1,23 @@
 /*
+ * Original work:
+ *
+ * highlight.js terraform syntax highlighting definition
+ *
+ * @see https://github.com/highlightjs/highlight.js
+ *
+ * :TODO:
+ *
+ * @package: highlightjs-terraform
+ * @author:  Nikos Tsirmirakis <nikos.tsirmirakis@winopsdba.com>
+ * @since:   2019-03-20
+ *
+ * Description: Terraform (HCL) language definition
+ * Category: scripting
+ */
+
+/*
+ * Forked work:
+ *
  * highlight.js terraform syntax highlighting definition
  *
  * @package: highlightjs-terraform
